@@ -5,6 +5,7 @@ CPPLIBS=`pkg-config --libs gtk+-3.0`
 OUTPUT_NAME=netfx3
 INCLUDE_DIR=include
 SRC_DIR=src
+OPTS=-rdynamic
 
 ######
 
@@ -15,7 +16,7 @@ RESOURCE_=.gresources.xml
 $(OUTPUT_NAME): $(RESOURCE_FILE)
 	rm -rf bin
 	mkdir bin
-	$(CC) $(SRC_DIR)/* -o bin/$(OUTPUT_NAME) -I $(INCLUDE_DIR) $(CPPFLAGS) $(CPPLIBS)
+	$(CC) $(SRC_DIR)/* -o bin/$(OUTPUT_NAME) $(OPTS) -I $(INCLUDE_DIR) $(CPPFLAGS) $(CPPLIBS)
 
 
 
