@@ -12,4 +12,9 @@
     void on_application_activate(GtkApplication *app, gpointer data);
     static void load_css(void);
 
+    /**
+     * @param window the window to apply the header_bar 
+    */
+    static void update_header_bar(GtkWindow *window);
+
 #endif // __NETFX3__

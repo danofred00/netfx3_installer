@@ -1,17 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.40.0 -->
+<!-- Generated with glade 3.40.0 
+
+Copyright (C) All Rigth Reserved 2022
+
+This file is part of NetFx3.
+
+NetFx3 is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+NetFx3 is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with NetFx3.  If not, see <http://www.gnu.org/licenses/>.
+
+Author: Daniel Leussa
+
+-->
 <interface>
   <requires lib="gtk+" version="3.24"/>
+  <!-- interface-local-resource-path images -->
+  <!-- interface-css-provider-path style.css -->
+  <!-- interface-license-type gplv3 -->
+  <!-- interface-name NetFx3 -->
+  <!-- interface-copyright All Rigth Reserved 2022 -->
+  <!-- interface-authors Daniel Leussa -->
+  <object class="GtkHeaderBar" id="headerbar">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="title" translatable="yes">NETFX3 Installer</property>
+    <property name="subtitle" translatable="yes">An open source software created by @Danofred</property>
+    <property name="spacing">1</property>
+    <child>
+      <placeholder/>
+    </child>
+  </object>
   <object class="GtkWindow" id="window">
     <property name="width-request">300</property>
     <property name="height-request">300</property>
     <property name="can-focus">False</property>
     <child>
-      <object class="GtkLabel">
-        <property name="visible">True</property>
-        <property name="can-focus">False</property>
-        <property name="label" translatable="yes">Hello world</property>
-      </object>
+      <placeholder/>
     </child>
   </object>
 </interface>
