@@ -1,3 +1,10 @@
+
+############# othes c files
+resources.c
+*.*~
+bin
+.vscode
+
 # Prerequisites
 *.d
 
