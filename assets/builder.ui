@@ -56,13 +56,14 @@ Author: Daniel Leussa
         <property name="margin-top">10</property>
         <property name="margin-bottom">10</property>
         <child>
-          <object class="GtkButton" id="btn_stack_simple_install">
+          <object class="GtkButton" id="btn_install">
             <property name="label" translatable="yes">INSTALL</property>
             <property name="width-request">150</property>
             <property name="height-request">60</property>
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
+            <signal name="clicked" handler="on_btn_install_clicked" swapped="no"/>
             <style>
               <class name="btn_install"/>
             </style>

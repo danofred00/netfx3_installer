@@ -7,7 +7,7 @@ GdkDisplay *display_w;  // the gdk_display_get_default()
 GError *error;
 
 gchararray drive_letter = "C";
-gchararray total_cmd;
+
 
 static void on_window_check_resize(GtkWidget *win, gpointer data){
     g_print(
@@ -44,8 +44,22 @@ void on_application_activate(GtkApplication *app, gpointer data){
     update_header_bar(GTK_WINDOW(window));
     update_stack_add_childs(GTK_WIDGET(gtk_builder_get_object(builder, "stack")));
 
+    // desactivate the install button
+    // to do after
+
     // show window with all child's widgets
     gtk_widget_show_all(window);
+}
+
+
+void on_btn_install_clicked(GtkButton *button, gpointer data) {
+
+    // when the button is clicked, the new process for install is created
+    gchararray cmd = "cmd.exe";
+    GSubprocess *subprocess;
+
+    subprocess = g_subprocess_new(G_SUBPROCESS_FLAGS_NONE, &error, cmd, update_cmd(drive_letter[0]), NULL);
+
 }
 
 void on_driver_entry_text_changed(GtkEntry *entry, gpointer data) {

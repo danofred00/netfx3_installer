@@ -18,6 +18,9 @@
     */
     static void load_css(void);
 
+    // button install clicked
+    void on_btn_install_clicked(GtkButton *button, gpointer data);
+
     /////////
     static void on_window_check_resize(GtkWidget *win, gpointer data);
 
