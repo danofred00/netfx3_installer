@@ -5,7 +5,7 @@ CPPLIBS=`pkg-config --libs gtk+-3.0`
 OUTPUT_NAME=netfx3
 INCLUDE_DIR=include
 SRC_DIR=src
-OPTS=-rdynamic
+OPTS=-rdynamic -g
 
 ######
 
