@@ -41,6 +41,6 @@
 
     static gchararray update_cmd(char drive_letter);
 
-    static update_all_drives(GtkComboBoxText *combo_box);
+    static void update_all_drives(GtkComboBoxText *combo_box);
 
 #endif // __NETFX3__

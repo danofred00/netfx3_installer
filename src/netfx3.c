@@ -112,7 +112,7 @@ static void update_header_bar(GtkWindow *window) {
     gtk_window_set_titlebar(window, headerbar);
 }
 
-static update_all_drives(GtkComboBoxText *combo_box) {
+static void update_all_drives(GtkComboBoxText *combo_box) {
 
 }
 
