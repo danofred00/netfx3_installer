@@ -91,14 +91,10 @@ Author: Daniel Leussa
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="driver_entry">
-                <property name="width-request">20</property>
-                <property name="height-request">20</property>
+              <object class="GtkComboBoxText" id="drives_text">
                 <property name="visible">True</property>
-                <property name="can-focus">True</property>
-                <property name="max-length">1</property>
-                <property name="max-width-chars">2</property>
-                <signal name="changed" handler="on_driver_entry_text_changed" swapped="no"/>
+                <property name="can-focus">False</property>
+                <signal name="changed" handler="on_drives_text_changed" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -130,7 +126,8 @@ Author: Daniel Leussa
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="label" translatable="yes">Show Command</property>
+                <property name="label" translatable="yes">_Show Command</property>
+                <property name="use-underline">True</property>
               </object>
             </child>
           </object>

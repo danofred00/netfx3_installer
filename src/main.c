@@ -1,5 +1,7 @@
 
 #include <netfx3.h>
+//#include <directory.h>
+//#include <stdio.h>
 
 int main(int argc, char *argv[])
 {
@@ -18,4 +20,10 @@ int main(int argc, char *argv[])
     g_object_unref(app);
 
     return status;
+    /*/
+
+   if(get_drives() == NULL)
+        puts("No avaliables drives");
+
+   return 0;*/
 }
