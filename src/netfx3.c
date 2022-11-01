@@ -146,9 +146,6 @@ static int show_message_box(GtkWindow *parent, gchararray title, gchararray msg,
     if(response)
         gtk_widget_destroy(GTK_WIDGET(dialog));
 
-    if(dialog)
-        g_object_unref(dialog);
-
     return response;
 }
 
