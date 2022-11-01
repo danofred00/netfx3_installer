@@ -32,23 +32,112 @@ Author: Daniel Leussa
   <object class="GtkHeaderBar" id="headerbar">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
-    <property name="title" translatable="yes">NETFX3 Installer</property>
-    <property name="subtitle" translatable="yes">An open source software created by @Danofred</property>
+    <property name="title" translatable="yes">N.O.I (NETFX3 OfflineInstaller)</property>
+    <property name="subtitle" translatable="yes">An open source tool</property>
     <property name="spacing">1</property>
     <child>
       <placeholder/>
     </child>
   </object>
   <object class="GtkFrame" id="stack_about">
+    <property name="width-request">700</property>
+    <property name="height-request">200</property>
     <property name="visible">True</property>
     <property name="can-focus">False</property>
     <property name="label-xalign">0</property>
     <property name="shadow-type">none</property>
     <child>
-      <object class="GtkLabel">
+      <object class="GtkBox">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
-        <property name="label" translatable="yes">About Screen</property>
+        <property name="margin-start">10</property>
+        <property name="margin-end">10</property>
+        <property name="margin-top">10</property>
+        <property name="margin-bottom">10</property>
+        <property name="spacing">10</property>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">About</property>
+                <attributes>
+                  <attribute name="font-desc" value="Cantarell Bold 20"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">	N.O.I (NetFx3 Offline Installer)  is an free offline 
+tool who help to install  easyly a .Net Framework 3.0 
+&amp; 2.0 using iso of the system who need it install</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLinkButton">
+                <property name="label" translatable="yes">Get source from Github</property>
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">True</property>
+                <property name="relief">none</property>
+                <property name="uri">https://github.com/danofred00/netfx3_installer</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">By @Danofred00</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">3</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkImage">
+            <property name="name">about-image</property>
+            <property name="width-request">250</property>
+            <property name="height-request">100</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="pixbuf">images/me.png</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
       </object>
     </child>
     <child type="label_item">

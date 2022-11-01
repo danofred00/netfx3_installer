@@ -25,4 +25,4 @@ $(RESOURCE_FILE):
 	#	rm -f src/$(RESOURCE_FILE)
 	#fi 
 
-	glib-compile-resources --generate-source --sourcedir=$(ASSETS_DIR) --target=src/$(RESOURCE_FILE) $(RESOURCE_)
+	glib-compile-resources --generate-source --sourcedir=$(ASSETS_DIR) --target=src/$(RESOURCE_FILE) $(RESOURCE_) --dependency-file=rdependencies.txt

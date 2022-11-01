@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-    <!-- assets image files-->
-    <gresource prefix="/cm/netfx3/danofred/assets/images">
-
-    </gresource>
 
     <!-- others assets files-->
     <gresource prefix="/cm/netfx3/danofred/assets/">
         <file compressed="true" preprocess="xml-stripblanks">builder.ui</file>
         <file compressed="true">style.css</file>
     </gresource>
+
+    <!-- assets image files-->
+    <gresource prefix="/cm/netfx3/danofred/assets/">
+        <file compressed="true">images/me.png</file>
+    </gresource>
+
 </gresources>

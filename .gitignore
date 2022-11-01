@@ -4,6 +4,7 @@ resources.c
 *.*~
 bin
 .vscode
+rdependencies.txt
 
 # Prerequisites
 *.d

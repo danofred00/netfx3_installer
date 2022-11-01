@@ -122,7 +122,7 @@ static void update_stack_add_childs(GtkWidget *stack){
 
 static int show_message_box(GtkWindow *parent, gchararray title, gchararray msg, gchararray second_msg) {
 
-    GtkMessageDialog *dialog;
+    GtkWidget *dialog;
     gint response;
 
     // create a new message_dialog here
@@ -139,7 +139,7 @@ static int show_message_box(GtkWindow *parent, gchararray title, gchararray msg,
 
     // adding the secondary message in the box if it exists
     if(second_msg)
-        gtk_message_dialog_format_secondary_text(dialog, second_msg);
+        gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog), second_msg);
 
     // run the dialog and return a value of this one
     response = gtk_dialog_run(GTK_DIALOG(dialog));
@@ -174,6 +174,7 @@ static void update_all_drives(GtkComboBoxText *combo_box) {
         // show drive is false already
         // append no avaliables devices text 
         gtk_combo_box_text_append_text(combo_box, "No Avaliables devices");
+        gtk_combo_box_set_active(GTK_COMBO_BOX(combo_box), 0);
         return;
     }
 

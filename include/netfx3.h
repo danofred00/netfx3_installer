@@ -18,7 +18,7 @@
     */
     static void load_css(void);
 
-    // button install clicked
+    /// @brief Event called when button's install is clicked
     void on_btn_install_clicked(GtkButton *button, gpointer data);
 
     /////////
