@@ -77,7 +77,10 @@ void on_btn_install_clicked(GtkButton *button, gpointer data) {
 
 void on_drives_text_changed(GtkComboBoxText *combo_box, gpointer data) {
     drive_letter = gtk_combo_box_text_get_active_text(combo_box);
-    gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, "cmd_command")), update_cmd(drive_letter[0]));
+    gtk_label_set_text(
+        GTK_LABEL(gtk_builder_get_object(builder, "cmd_command")),
+        update_cmd(drive_letter[0])
+    );
 }
 
 void on_expander_activate(GtkExpander *expander, gpointer data) {
@@ -101,8 +104,19 @@ static void update_stack_add_childs(GtkWidget *stack){
     about = GTK_WIDGET(gtk_builder_get_object(builder, "stack_about"));
 
     // add childs
-    gtk_stack_add_titled(GTK_STACK(stack), stack_simple_mode, "stack_simple", "Simple Mode");
-    gtk_stack_add_titled(GTK_STACK(stack), about, "stack_about", "About");
+    gtk_stack_add_titled(
+        GTK_STACK(stack),
+        stack_simple_mode,
+        "stack_simple",
+        "Simple Mode"
+    );
+    
+    gtk_stack_add_titled(
+        GTK_STACK(stack),
+        about,
+        "stack_about",
+        "About"
+    );
 
 }
 
@@ -132,7 +146,8 @@ static int show_message_box(GtkWindow *parent, gchararray title, gchararray msg,
     if(response)
         gtk_widget_destroy(GTK_WIDGET(dialog));
 
-    g_object_unref(dialog);
+    if(dialog)
+        g_object_unref(dialog);
 
     return response;
 }
