@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.40.0 
+
+Copyright (C) All Rigth Reserved 2022
+
+This file is part of NetFx3.
+
+NetFx3 is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+NetFx3 is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with NetFx3.  If not, see <http://www.gnu.org/licenses/>.
+
+Author: Daniel Leussa
+
+-->
+<interface>
+  <requires lib="gtk+" version="3.24"/>
+  <!-- interface-local-resource-path images -->
+  <!-- interface-css-provider-path style.css -->
+  <!-- interface-license-type gplv3 -->
+  <!-- interface-name NetFx3 -->
+  <!-- interface-copyright All Rigth Reserved 2022 -->
+  <!-- interface-authors Daniel Leussa -->
+  <object class="GtkHeaderBar" id="headerbar">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="title" translatable="yes">NETFX3 Installer</property>
+    <property name="subtitle" translatable="yes">An open source software created by @Danofred</property>
+    <property name="spacing">1</property>
+    <child>
+      <placeholder/>
+    </child>
+  </object>
+  <object class="GtkFrame" id="stack_about">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="label-xalign">0</property>
+    <property name="shadow-type">none</property>
+    <child>
+      <object class="GtkLabel">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="label" translatable="yes">About Screen</property>
+      </object>
+    </child>
+    <child type="label_item">
+      <placeholder/>
+    </child>
+  </object>
+  <object class="GtkFrame" id="stack_simple">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="label-xalign">0</property>
+    <property name="label-yalign">0</property>
+    <property name="shadow-type">none</property>
+    <child>
+      <object class="GtkFixed">
+        <property name="width-request">700</property>
+        <property name="height-request">200</property>
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="margin-start">10</property>
+        <property name="margin-end">10</property>
+        <property name="margin-top">10</property>
+        <property name="margin-bottom">10</property>
+        <child>
+          <object class="GtkButton" id="btn_install">
+            <property name="label" translatable="yes">INSTALL</property>
+            <property name="width-request">150</property>
+            <property name="height-request">60</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <signal name="clicked" handler="on_btn_install_clicked" object="window" swapped="no"/>
+            <style>
+              <class name="btn_install"/>
+            </style>
+          </object>
+          <packing>
+            <property name="x">300</property>
+            <property name="y">150</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="spacing">5</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">Enter the drive Letter</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkComboBoxText" id="drives_text">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <signal name="changed" handler="on_drives_text_changed" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="x">100</property>
+            <property name="y">50</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkExpander" id="expander">
+            <property name="width-request">100</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <signal name="activate" handler="on_expander_activate" swapped="no"/>
+            <child>
+              <object class="GtkLabel" id="cmd_command">
+                <property name="name">cmd_command</property>
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">command</property>
+              </object>
+            </child>
+            <child type="label">
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">_Show Command</property>
+                <property name="use-underline">True</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">100</property>
+            <property name="y">90</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+    <child type="label_item">
+      <placeholder/>
+    </child>
+  </object>
+  <object class="GtkWindow" id="window">
+    <property name="width-request">700</property>
+    <property name="height-request">350</property>
+    <property name="can-focus">False</property>
+    <signal name="check-resize" handler="on_window_check_resize" swapped="no"/>
+    <child>
+      <object class="GtkBox">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkStackSwitcher" id="stackswitcher">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="homogeneous">True</property>
+            <property name="stack">stack</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkStack" id="stack">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
