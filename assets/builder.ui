@@ -36,7 +36,11 @@ Author: Daniel Leussa
     <property name="subtitle" translatable="yes">An open source tool</property>
     <property name="spacing">1</property>
     <child>
-      <placeholder/>
+      <object class="GtkImage">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="pixbuf">images/icon_64x64.png</property>
+      </object>
     </child>
   </object>
   <object class="GtkFrame" id="stack_about">
@@ -130,7 +134,7 @@ tool who help to install  easyly a .Net Framework 3.0
             <property name="height-request">100</property>
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="pixbuf">images/me.png</property>
+            <property name="pixbuf">images/logo.png</property>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -145,13 +149,15 @@ tool who help to install  easyly a .Net Framework 3.0
     </child>
   </object>
   <object class="GtkFrame" id="stack_simple">
+    <property name="name">stack_simple</property>
     <property name="visible">True</property>
     <property name="can-focus">False</property>
     <property name="label-xalign">0</property>
     <property name="label-yalign">0</property>
     <property name="shadow-type">none</property>
     <child>
-      <object class="GtkFixed">
+      <object class="GtkFixed" id="fixed">
+        <property name="name">fixed</property>
         <property name="width-request">700</property>
         <property name="height-request">200</property>
         <property name="visible">True</property>

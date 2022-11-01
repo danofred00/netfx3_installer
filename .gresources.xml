@@ -9,7 +9,9 @@
 
     <!-- assets image files-->
     <gresource prefix="/cm/netfx3/danofred/assets/">
-        <file compressed="true">images/me.png</file>
+        <file compressed="true">images/logo.png</file>
+        <file compressed="true">images/bg.png</file>
+        <file compressed="true">images/icon_64x64.png</file>
     </gresource>
 
 </gresources>

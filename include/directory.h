@@ -4,10 +4,10 @@
     #define __DIRECTORY__
 
     // some enum used by is_directory function
-    typedef enum {
+    typedef enum _DIR_RESULT {
         DIR_OK,     // if file is an directory
         DIR_FAILED  // fi file is not a dir or file not exists
-    };
+    } _DIR_RESULT;
 
     /*
      * This function list all avaliables drives path for the current OS (Windows)

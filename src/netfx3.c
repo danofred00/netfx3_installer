@@ -42,6 +42,13 @@ void on_application_activate(GtkApplication *app, gpointer data){
     gtk_application_add_window(app, GTK_WINDOW(window));
 
     // customise the window
+    gtk_window_set_icon(
+        GTK_WINDOW(window),
+        gtk_image_get_pixbuf(GTK_IMAGE(
+            gtk_image_new_from_resource(
+                "/cm/netfx3/danofred/assets/images/icon_64x64.png"
+        )))
+    );
     gtk_window_set_resizable(GTK_WINDOW(window), FALSE);
     update_header_bar(GTK_WINDOW(window));
     update_stack_add_childs(GTK_WIDGET(gtk_builder_get_object(builder, "stack")));

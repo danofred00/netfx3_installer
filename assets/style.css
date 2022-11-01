@@ -17,9 +17,16 @@ button.btn_install{
     border-radius: 10px;
 }
 
-/*
-#about-image{
-    border: 2px solid red;
-    width: 100px;
+#stack_simple {
+    background: url('images/bg.png') no-repeat center;
+    background-size: 100%;
 }
-*/
+
+#fixed{
+    background: white;
+}
+
+#about-image{
+    border: 2px solid #000;
+    background-color: #fff;
+}
