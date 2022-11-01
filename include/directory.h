@@ -9,17 +9,16 @@
         DIR_FAILED  // fi file is not a dir or file not exists
     } _DIR_RESULT;
 
-    /*
-     * This function list all avaliables drives path for the current OS (Windows)
-     *
+    /**
+     * @brief This function list all avaliables drives path for the current OS (Windows)
      * @return NULL if we have no avaliable drives
      * and array of drive path (char **) if we have any drive path here
     */
     char **get_drives(void);
 
     /**
-     * This function if a file is directory or no
-     * @return DIR_OK if file is dir
+     * @brief This function if a file is directory or no
+     * @return DIR_RESULT enum
     */
     static int is_directory(char dirname[4]);
 

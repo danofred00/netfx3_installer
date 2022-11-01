@@ -11,21 +11,39 @@
 
     #include <gtk/gtk.h>
 
+    /**
+     * @brief Call when the app is active
+     * @param app Instance of a app
+     * @param data Represent a data transfered with the app when signal activate is raised
+    */
     void on_application_activate(GtkApplication *app, gpointer data);
 
+
     /**
-     * This function load and apply the css style to the current window
+     * @brief This function load and apply the css style to the current window
     */
     static void load_css(void);
 
-    /// @brief Event called when button's install is clicked
+
+    /**
+     * @brief Event called when button's install is clicked
+     * @param button represent the button who is raised this event
+     * @param data Data transfered
+    */ 
     void on_btn_install_clicked(GtkButton *button, gpointer data);
 
-    /////////
+    /**
+     * @brief Event called when widget is resized
+     * @param win represent the widget who is raised this event
+     * @param data Data transfered
+    */
     static void on_window_check_resize(GtkWidget *win, gpointer data);
 
-    void on_driver_entry_text_changed(GtkEntry *entry, gpointer data);
-
+    /**
+     * @brief Event called when expander is activate
+     * @param expander GtkExpander *
+     * @param data Data transfered
+    */
     void on_expander_activate(GtkExpander *expander, gpointer data);
 
     /**
@@ -35,16 +53,26 @@
     static void update_header_bar(GtkWindow *window);
 
     /**
+     * @brief It update childs of the stack passed in argument
      * @param stack Represent the stack 
     */
     static void update_stack_add_childs(GtkWidget *stack);
 
+    /**
+     * @brief Update command to install netfx3
+     * @param drive_letter
+     * @return gchararray 
+    */
     static gchararray update_cmd(char drive_letter);
 
+    /**
+     * @brief This function check avaliables drives and update values in combo_box
+     * @param combo_box The combo_box_text to apply values
+     */ 
     static void update_all_drives(GtkComboBoxText *combo_box);
 
     /**
-     * The function show a simple message dialogbox
+     * @brief The function show a simple message dialogbox
      * 
      * @param parent represent the parent Window
      * @param title The title of the box

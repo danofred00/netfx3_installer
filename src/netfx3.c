@@ -2,13 +2,12 @@
 #include <netfx3.h>
 #include <directory.h>
 
-GtkBuilder *builder;
+GtkBuilder *builder;    // represent the builder used to get objects
 GdkDisplay *display_w;  // the gdk_display_get_default()
-
-GError *error;
-
-gchararray drive_letter = "X";
+GError *error;      // use to constaint errors
+gchararray drive_letter = "X";  // the default drive_letter
 gboolean show_drive = FALSE;
+
 
 static void on_window_check_resize(GtkWidget *win, gpointer data){
     g_print(
