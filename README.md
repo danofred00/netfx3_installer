@@ -8,7 +8,7 @@ This is a little Microsoft Windows .Net Framework 3.0 and 2.0 offline installer.
 
 ## ``How to get it ?``
 
-1. ``Get from binairy file``
+1. ``Get from binary file``
 
     The current version is only for x86_64 OS. Click this link to [download](https://linkhere.com "https://linkhere.com") a file.
 
