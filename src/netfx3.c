@@ -1,5 +1,6 @@
 
 #include <netfx3.h>
+#include <directory.h>
 
 GtkBuilder *builder;
 GdkDisplay *display_w;  // the gdk_display_get_default()
@@ -7,7 +8,7 @@ GdkDisplay *display_w;  // the gdk_display_get_default()
 GError *error;
 
 gchararray drive_letter = "X";
-
+gboolean show_drive = FALSE;
 
 static void on_window_check_resize(GtkWidget *win, gpointer data){
     g_print(
@@ -60,8 +61,9 @@ void on_btn_install_clicked(GtkButton *button, gpointer data) {
     // when the button is clicked, the new process for install is created
     gchararray cmd = "cmd.exe /k ";
     GSubprocess *subprocess;
+    GError *error_;
 
-    subprocess = g_subprocess_new(G_SUBPROCESS_FLAGS_NONE, &error, cmd, update_cmd(drive_letter[0]), NULL);
+    subprocess = g_subprocess_new(G_SUBPROCESS_FLAGS_NONE, &error_, cmd, update_cmd(drive_letter[0]), NULL);
 
 }
 
@@ -78,7 +80,7 @@ void on_expander_activate(GtkExpander *expander, gpointer data) {
 static void update_stack_add_childs(GtkWidget *stack){
 
     GtkWidget *stack_simple_mode;
-    //GtkWidget *stack_advance_mode;
+    GtkWidget *about;
     GtkWidget *stackswitcher;
 
     // getting objects
@@ -88,11 +90,11 @@ static void update_stack_add_childs(GtkWidget *stack){
     //// get childs
     
     stack_simple_mode = GTK_WIDGET(gtk_builder_get_object(builder, "stack_simple"));
-    //stack_advance_mode = GTK_WIDGET(gtk_builder_get_object(builder, "stack_advance"));
+    about = GTK_WIDGET(gtk_builder_get_object(builder, "stack_about"));
 
     // add childs
     gtk_stack_add_titled(GTK_STACK(stack), stack_simple_mode, "stack_simple", "Simple Mode");
-    //gtk_stack_add_titled(GTK_STACK(stack), stack_advance_mode, "stack_advance", "Advance Mode");
+    gtk_stack_add_titled(GTK_STACK(stack), about, "stack_about", "About");
 
 }
 
@@ -114,6 +116,27 @@ static void update_header_bar(GtkWindow *window) {
 
 static void update_all_drives(GtkComboBoxText *combo_box) {
 
+    gchararray *all_drives = get_drives();
+
+    // if they have no avaliables drives
+    if(all_drives == NULL) {
+        gtk_combo_box_text_append_text(combo_box, "No Avaliables devices");
+        return;
+    }
+
+    // the otherwise case
+    gchararray d;
+    int i=0;
+
+    while ((d = all_drives[i]) != NULL)
+    {
+        gtk_combo_box_text_append_text(combo_box, d);
+        i++;
+    }
+    
+    // free the space allocated by the function get_drives()
+    if(all_drives)
+        free(all_drives);
 }
 
 static void load_css(void) {

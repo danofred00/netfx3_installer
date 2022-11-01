@@ -39,6 +39,22 @@ Author: Daniel Leussa
       <placeholder/>
     </child>
   </object>
+  <object class="GtkFrame" id="stack_about">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="label-xalign">0</property>
+    <property name="shadow-type">none</property>
+    <child>
+      <object class="GtkLabel">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="label" translatable="yes">About Screen</property>
+      </object>
+    </child>
+    <child type="label_item">
+      <placeholder/>
+    </child>
+  </object>
   <object class="GtkFrame" id="stack_simple">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
@@ -169,6 +185,9 @@ Author: Daniel Leussa
           <object class="GtkStack" id="stack">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
+            <child>
+              <placeholder/>
+            </child>
             <child>
               <placeholder/>
             </child>
