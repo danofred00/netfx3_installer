@@ -1,7 +1,7 @@
 # N.O.I (NetFx3 Offline Installer) vBeta
 
 ![Title](assets/images/screenshot.png)
-#### Make by [@Danofred00](https://github/danofred00 "Link to Danofred")
+#### Make by [@Danofred00](https://github.com/danofred00 "Link to Danofred")
 #
 
 This is a little Microsoft Windows .Net Framework 3.0 and 2.0 offline installer. It's open Source tool for windows and easy to use.
