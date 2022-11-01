@@ -43,4 +43,15 @@
 
     static void update_all_drives(GtkComboBoxText *combo_box);
 
+    /**
+     * The function show a simple message dialogbox
+     * 
+     * @param parent represent the parent Window
+     * @param title The title of the box
+     * @param msg Represent the showing message in the box
+     * @param second_msg it represent the second message for more details
+     * @return The result of the showing dialog
+    */
+    static int show_message_box(GtkWindow *parent, gchararray title, gchararray msg, gchararray second_msg);
+
 #endif // __NETFX3__

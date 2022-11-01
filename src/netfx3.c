@@ -42,6 +42,7 @@ void on_application_activate(GtkApplication *app, gpointer data){
     gtk_application_add_window(app, GTK_WINDOW(window));
 
     // customise the window
+    gtk_window_set_resizable(GTK_WINDOW(window), FALSE);
     update_header_bar(GTK_WINDOW(window));
     update_stack_add_childs(GTK_WIDGET(gtk_builder_get_object(builder, "stack")));
 
@@ -63,8 +64,15 @@ void on_btn_install_clicked(GtkButton *button, gpointer data) {
     GSubprocess *subprocess;
     GError *error_;
 
-    subprocess = g_subprocess_new(G_SUBPROCESS_FLAGS_NONE, &error_, cmd, update_cmd(drive_letter[0]), NULL);
-
+    if (show_drive == TRUE)
+        subprocess = g_subprocess_new(G_SUBPROCESS_FLAGS_NONE, &error_, cmd, update_cmd(drive_letter[0]), NULL);
+    else 
+        show_message_box(
+            (GtkWindow *)data,
+            "ERROR !!! ",
+            "Can't install the feature",
+            "No NetFx3 feature detect in the selected drive"
+        );
 }
 
 void on_drives_text_changed(GtkComboBoxText *combo_box, gpointer data) {
@@ -98,6 +106,37 @@ static void update_stack_add_childs(GtkWidget *stack){
 
 }
 
+static int show_message_box(GtkWindow *parent, gchararray title, gchararray msg, gchararray second_msg) {
+
+    GtkMessageDialog *dialog;
+    gint response;
+
+    // create a new message_dialog here
+    dialog = gtk_message_dialog_new(
+        parent,             // the parent of this dialog
+        GTK_DIALOG_MODAL,   // the dialog flag
+        GTK_MESSAGE_ERROR,  // the type of message in this box
+        GTK_BUTTONS_OK,     // avaliables buttons in the screen
+        msg                 // the message of the box
+    );
+
+    // adding the title
+    gtk_window_set_title(GTK_WINDOW(dialog), title);
+
+    // adding the secondary message in the box if it exists
+    if(second_msg)
+        gtk_message_dialog_format_secondary_text(dialog, second_msg);
+
+    // run the dialog and return a value of this one
+    response = gtk_dialog_run(GTK_DIALOG(dialog));
+    if(response)
+        gtk_widget_destroy(GTK_WIDGET(dialog));
+
+    g_object_unref(dialog);
+
+    return response;
+}
+
 static gchararray update_cmd(char drive_letter){
     gchararray cmd = (gchararray) malloc(128);
     g_snprintf(cmd, 127, CMD_PATTERN, drive_letter);
@@ -120,6 +159,8 @@ static void update_all_drives(GtkComboBoxText *combo_box) {
 
     // if they have no avaliables drives
     if(all_drives == NULL) {
+        // show drive is false already
+        // append no avaliables devices text 
         gtk_combo_box_text_append_text(combo_box, "No Avaliables devices");
         return;
     }
@@ -133,6 +174,9 @@ static void update_all_drives(GtkComboBoxText *combo_box) {
         gtk_combo_box_text_append_text(combo_box, d);
         i++;
     }
+
+    // set show_drive to TRUE
+    show_drive = TRUE;
     
     // free the space allocated by the function get_drives()
     if(all_drives)

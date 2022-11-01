@@ -79,7 +79,7 @@ Author: Daniel Leussa
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
-            <signal name="clicked" handler="on_btn_install_clicked" swapped="no"/>
+            <signal name="clicked" handler="on_btn_install_clicked" object="window" swapped="no"/>
             <style>
               <class name="btn_install"/>
             </style>
