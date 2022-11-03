@@ -21,8 +21,5 @@ $(OUTPUT_NAME): $(RESOURCE_FILE)
 
 
 $(RESOURCE_FILE):
-	##if [ -e src/$(RESOURCE_FILE) ]; then
-	#	rm -f src/$(RESOURCE_FILE)
-	#fi 
-
+	
 	glib-compile-resources --generate-source --sourcedir=$(ASSETS_DIR) --target=src/$(RESOURCE_FILE) $(RESOURCE_) --dependency-file=rdependencies.txt

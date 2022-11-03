@@ -24,6 +24,6 @@
      * @brief This function if a file is directory or no
      * @return DIR_RESULT enum
     */
-    static int is_directory(char dirname[4]);
+    int is_directory(const char *dirname);
 
 #endif // __DIRECTORY__

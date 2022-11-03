@@ -69,11 +69,13 @@ void on_btn_install_clicked(GtkButton *button, gpointer data) {
 
     // when the button is clicked, the new process for install is created
     gchararray cmd = "cmd.exe";
-    gchar args[128];
+    gchar args[128], sxs[16];
     GSubprocess *subprocess;
     GError *error_ = NULL;
 
-    if (show_drive == TRUE) {
+    g_snprintf(sxs, 16, SXS_PATTERN, drive_letter[0]);
+
+    if (show_drive == TRUE && is_directory(sxs) == DIR_OK) {
     	g_snprintf(args, 128, "/c %s", update_cmd(drive_letter[0]));
         subprocess = g_subprocess_new(G_SUBPROCESS_FLAGS_NONE, &error_, cmd, args, NULL);
     } else 
@@ -200,7 +202,6 @@ static void update_all_drives(GtkComboBoxText *combo_box) {
         return;
     }
 
-g_print("have many drives\n");
     // the otherwise case
     gchararray d = (gchararray) malloc(4);
 
@@ -212,8 +213,6 @@ g_print("have many drives\n");
     }
 
     free(d);
-
-    g_print("finish this \n");
 
     fclose(fp);
     remove(FILENAME);

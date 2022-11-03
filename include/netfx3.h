@@ -9,6 +9,7 @@
     #define RESOURCE_BUILDER_PATH "/cm/netfx3/danofred/assets/builder.ui"
     #define RESOURCE_CSS_PATH "/cm/netfx3/danofred/assets/style.css"
     #define CMD_PATTERN "dism /Online /Enable-Feature /FeatureName:NetFX3 /Source:%c:\\sources\\sxs" 
+    #define SXS_PATTERN "%c:\\sources\\sxs"
 
     #if defined(_WIN32) || defined(_WIN64)
         #define MY_APP_FLAGS G_APPLICATION_FLAGS_NONE

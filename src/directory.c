@@ -85,7 +85,7 @@ int save_currents_drives(const char *file_name){
 }
 
 
-static int is_directory(char dirname[4]) {
+int is_directory(const char *dirname) {
     
     // no thins here for the moment
     DIR *dir = opendir(dirname);
