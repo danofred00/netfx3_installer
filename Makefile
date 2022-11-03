@@ -16,10 +16,14 @@ RESOURCE_=.gresources.xml
 $(OUTPUT_NAME): $(RESOURCE_FILE)
 	rm -rf bin
 	mkdir bin
-	$(CC) $(SRC_DIR)/* -o bin/$(OUTPUT_NAME) $(OPTS) -I $(INCLUDE_DIR) $(CPPFLAGS) $(CPPLIBS)
+	$(CC) $(SRC_DIR)/*.c -c $(OPTS) -I $(INCLUDE_DIR) $(CPPFLAGS)
+	$(CC) *.o -o bin/$(OUTPUT_NAME) $(CPPLIBS)
 
+	rm -f *.o
 
 
 $(RESOURCE_FILE):
 	
 	glib-compile-resources --generate-source --sourcedir=$(ASSETS_DIR) --target=src/$(RESOURCE_FILE) $(RESOURCE_) --dependency-file=rdependencies.txt
+
+	windres -i $(SRC_DIR)/resource.rc -o resource.o --output-format=coff --input-format=rc
