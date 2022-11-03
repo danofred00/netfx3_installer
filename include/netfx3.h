@@ -3,11 +3,18 @@
 
     #define __NETFX3__
 
+    #define FILENAME ".drives"
     #define PACKAGE_NAME "cm.netfx3.danofred"
     #define RESOURCE_PATH "/cm/netfx3/danofred"
     #define RESOURCE_BUILDER_PATH "/cm/netfx3/danofred/assets/builder.ui"
     #define RESOURCE_CSS_PATH "/cm/netfx3/danofred/assets/style.css"
     #define CMD_PATTERN "dism /Online /Enable-Feature /FeatureName:NetFX3 /Source:%c:\\sources\\sxs" 
+
+    #if defined(_WIN32) || defined(_WIN64)
+        #define MY_APP_FLAGS G_APPLICATION_FLAGS_NONE
+    #else
+        #define MY_APP_FLAGS G_APPLICATION_DEFAULT_FLAGS
+    #endif
 
     #include <gtk/gtk.h>
 
@@ -81,5 +88,11 @@
      * @return The result of the showing dialog
     */
     static int show_message_box(GtkWindow *parent, gchararray title, gchararray msg, gchararray second_msg);
+
+    /**
+     * @brief connect all signals 
+     * @param builder GtkBuilder *
+    */
+    static void connect_signals(GtkBuilder *builder);
 
 #endif // __NETFX3__

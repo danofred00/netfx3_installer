@@ -1,4 +1,6 @@
 
+#include <stdio.h>
+#include <stdlib.h>
 #include <netfx3.h>
 #include <directory.h>
 
@@ -7,7 +9,6 @@ GdkDisplay *display_w;  // the gdk_display_get_default()
 GError *error;      // use to constaint errors
 gchararray drive_letter = "X";  // the default drive_letter
 gboolean show_drive = FALSE;
-
 
 static void on_window_check_resize(GtkWidget *win, gpointer data){
     g_print(
@@ -31,7 +32,8 @@ void on_application_activate(GtkApplication *app, gpointer data){
     builder = gtk_builder_new_from_resource(RESOURCE_BUILDER_PATH);
 
     // enable all events
-    gtk_builder_connect_signals(builder, NULL);
+    //gtk_builder_connect_signals(builder, NULL);
+    connect_signals(builder);
 
     // getting the window
     window = GTK_WIDGET(gtk_builder_get_object(GTK_BUILDER(builder), "window"));
@@ -54,7 +56,7 @@ void on_application_activate(GtkApplication *app, gpointer data){
 
     // update all drives
     update_all_drives(GTK_COMBO_BOX_TEXT(gtk_builder_get_object(builder, "drives_text")));
-
+    
     // desactivate the install button
     // to do after
 
@@ -173,10 +175,22 @@ static void update_header_bar(GtkWindow *window) {
 
 static void update_all_drives(GtkComboBoxText *combo_box) {
 
-    gchararray *all_drives = get_drives();
+    /*
+    gchararray *all_drives = (char **) malloc(MAX_DRIVES_COUNT*4*sizeof(char));
+    if(all_drives == NULL) {
+        g_print("Error during this party");
+        //g_signal_emit_by_name(window, "destroy");
+        exit(-1);
+    }
+    */
+
+    FILE *fp;
+    save_currents_drives(FILENAME);
+
+    fp = fopen(FILENAME, "r");
 
     // if they have no avaliables drives
-    if(all_drives == NULL) {
+    if(fp == NULL) {
         // show drive is false already
         // append no avaliables devices text 
         gtk_combo_box_text_append_text(combo_box, "No Avaliables devices");
@@ -184,22 +198,30 @@ static void update_all_drives(GtkComboBoxText *combo_box) {
         return;
     }
 
+g_print("have many drives\n");
     // the otherwise case
-    gchararray d;
-    int i=0;
+    gchararray d = (gchararray) malloc(4);
 
-    while ((d = all_drives[i]) != NULL)
-    {
+    while (!feof(fp)){
+
+        fscanf(fp, "%s", d);
+        g_print("Drive : %s \n", d);
         gtk_combo_box_text_append_text(combo_box, d);
-        i++;
     }
+
+    free(d);
+
+    g_print("finish this \n");
+
+    fclose(fp);
+    remove(FILENAME);
 
     // set show_drive to TRUE
     show_drive = TRUE;
     
     // free the space allocated by the function get_drives()
-    if(all_drives)
-        free(all_drives);
+    //if(all_drives)
+    //    free(all_drives);
 }
 
 static void load_css(void) {
@@ -213,5 +235,33 @@ static void load_css(void) {
         gdk_display_get_default_screen(display_w),      // the window screen
         GTK_STYLE_PROVIDER(provider),                   // the css provider
         GTK_STYLE_PROVIDER_PRIORITY_APPLICATION         // style priority
+    );
+}
+
+static void connect_signals(GtkBuilder *builder){
+
+    // connect expander to activate event
+    g_signal_connect(
+        gtk_builder_get_object(builder, "expander"),
+        "activate",
+        G_CALLBACK(on_expander_activate),
+        NULL
+    );
+    
+    // connect combo_box_text to changed event
+    g_signal_connect(
+        gtk_builder_get_object(builder, "drives_text"),
+        "changed",
+        G_CALLBACK(on_drives_text_changed),
+        NULL
+    );
+    
+
+    // connect btn_install to signal clicked
+    g_signal_connect(
+        gtk_builder_get_object(builder, "btn_install"),
+        "clicked",
+        G_CALLBACK(on_btn_install_clicked),
+        NULL
     );
 }

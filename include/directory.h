@@ -3,6 +3,8 @@
 
     #define __DIRECTORY__
 
+    #define MAX_DRIVES_COUNT 26
+
     // some enum used by is_directory function
     typedef enum _DIR_RESULT {
         DIR_OK,     // if file is an directory
@@ -14,7 +16,9 @@
      * @return NULL if we have no avaliable drives
      * and array of drive path (char **) if we have any drive path here
     */
-    char **get_drives(void);
+    void get_drives(char **avaliables_drive);
+
+    int save_currents_drives(const char *file_name);
 
     /**
      * @brief This function if a file is directory or no

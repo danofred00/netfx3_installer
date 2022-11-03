@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     // the exit's status code
     gint status;
 
-    app = gtk_application_new(PACKAGE_NAME, G_APPLICATION_DEFAULT_FLAGS);
+    app = gtk_application_new(PACKAGE_NAME, MY_APP_FLAGS);
 
     // connect the activate signal to our app
     g_signal_connect(app, "activate", G_CALLBACK(on_application_activate), NULL);
