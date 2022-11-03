@@ -68,13 +68,15 @@ void on_application_activate(GtkApplication *app, gpointer data){
 void on_btn_install_clicked(GtkButton *button, gpointer data) {
 
     // when the button is clicked, the new process for install is created
-    gchararray cmd = "cmd.exe /k ";
+    gchararray cmd = "cmd.exe";
+    gchar args[128];
     GSubprocess *subprocess;
-    GError *error_;
+    GError *error_ = NULL;
 
-    if (show_drive == TRUE)
-        subprocess = g_subprocess_new(G_SUBPROCESS_FLAGS_NONE, &error_, cmd, update_cmd(drive_letter[0]), NULL);
-    else 
+    if (show_drive == TRUE) {
+    	g_snprintf(args, 128, "/c %s", update_cmd(drive_letter[0]));
+        subprocess = g_subprocess_new(G_SUBPROCESS_FLAGS_NONE, &error_, cmd, args, NULL);
+    } else 
         show_message_box(
             (GtkWindow *)data,
             "ERROR !!! ",
